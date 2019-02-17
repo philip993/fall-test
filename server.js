@@ -8,6 +8,7 @@ const passport = require("passport");
 
 const pages = require("./routes/pages");
 const users = require("./routes/users");
+const posts = require("./routes/posts");
 
 mongoose
   .connect("mongodb://localhost/fall", { useNewUrlParser: true })
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", pages);
 app.use("/users", users);
+app.use("/posts", posts);
 
 app.use((req, res, next) => {
   res.render("pages/notfound");
