@@ -26,3 +26,9 @@ exports.getAllPosts = (req, res) => {
       });
     });
 };
+
+exports.deletePost = (req, res) => {
+  Post.findOneAndDelete({ _id: req.params._id }).then(post => {
+    res.redirect("/posts");
+  });
+};
