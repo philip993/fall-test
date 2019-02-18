@@ -1,6 +1,10 @@
 const { Post } = require("../models/Post");
 const { User } = require("../models/User");
 
+exports.getPostMenu = (req, res) => {
+  res.render("posts/postMenu");
+};
+
 exports.getPostForm = (req, res) => {
   res.render("posts/add");
 };
@@ -13,7 +17,7 @@ exports.postNewPost = (req, res) => {
   });
 
   post.save().then(post => {
-    res.redirect("/posts");
+    res.redirect("/posts/all");
   });
 };
 
@@ -29,6 +33,6 @@ exports.getAllPosts = (req, res) => {
 
 exports.deletePost = (req, res) => {
   Post.findOneAndDelete({ _id: req.params._id }).then(post => {
-    res.redirect("/posts");
+    res.redirect("/posts/all");
   });
 };
