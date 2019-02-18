@@ -59,3 +59,7 @@ exports.getLogout = (req, res) => {
   req.logout();
   res.redirect("/");
 };
+
+exports.getUserMenu = (req, res) => {
+  res.render("users/userMenu");
+};

@@ -3,6 +3,7 @@ const router = express.Router();
 
 const userCtrl = require("../controllers/userCt");
 
+router.get("/", userCtrl.getUserMenu);
 router.get("/login", userCtrl.getLoginForm);
 router.post("/login", userCtrl.postLogin);
 router.get("/register", userCtrl.getRegisterForm);
