@@ -40,7 +40,6 @@ app.use(passport.session());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-moment().format("MMMM Do YY");
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", pages);
