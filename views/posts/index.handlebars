@@ -1,3 +1,4 @@
+<!--
 <h1>All posts</h1>
 {{#each posts}}
 <h3>{{title}}</h3>
@@ -6,4 +7,30 @@
 <p>{{dateCreated}}</p>
 {{else}}
 <p>no posts yet</p>
+{{/each}}
+-->
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">POSTS</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+</div>
+{{#each posts}}
+<div class="card text-center">
+    <div class="card-header">
+        Author: {{username.username}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{title}}</h5>
+        <p class="card-text">{{content}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-muted">
+        {{dateCreated}}
+    </div>
+</div>
+{{else}}
+<div class="alert alert-secondary" role="alert">
+    No Posts yet!
+</div>
 {{/each}}
