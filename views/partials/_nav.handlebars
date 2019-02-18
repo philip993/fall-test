@@ -51,6 +51,11 @@
                 <a class="nav-link" href="/posts">POSTS</a>
             </li>
         </ul>
+        {{#if user}}
+        <span class='navbar-text'>
+            <a href="/users/profile">Hello {{user}}</a>
+        </span>
+        {{/if}}
         <span class="navbar-text">
             <a class="nav-link" href="/users/logout">LOG OUT</a>
         </span>
