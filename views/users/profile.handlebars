@@ -1,0 +1,36 @@
+<h1>Profile</h1>
+<!--
+{{#if user}}
+<p>{{user}} </p>
+<p>{{firstName}}</p>
+<p> {{lastName}}</p>
+{{else}}
+<p>No user logged in</p>
+{{/if}}
+-->
+
+{{#if user}}
+<div class="card text-center">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" href="/users/profile">Welcome {{user}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/posts">Posts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Personal Information</h5>
+        <p class="card-text">First Name: {{firstName}}</p>
+        <p class="card-text">Last Name: {{lastName}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+{{else}}
+<p>No user logged in</p>
+{{/if}}

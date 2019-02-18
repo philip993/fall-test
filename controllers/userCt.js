@@ -42,3 +42,20 @@ exports.postRegister = (req, res) => {
     });
   });
 };
+
+exports.getUser = (req, res) => {
+  if (req.user) {
+    res.render("users/profile", {
+      user: req.user.username,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName
+    });
+  } else {
+    res.redirect("/users/login");
+  }
+};
+
+exports.getLogout = (req, res) => {
+  req.logout();
+  res.redirect("/");
+};
