@@ -8,7 +8,8 @@ exports.getPostForm = (req, res) => {
 exports.postNewPost = (req, res) => {
   const post = new Post({
     title: req.body.title,
-    content: req.body.content
+    content: req.body.content,
+    username: req.user
   });
 
   post.save().then(post => {
@@ -18,8 +19,10 @@ exports.postNewPost = (req, res) => {
 
 exports.getAllPosts = (req, res) => {
   Post.find({})
-    .populate("author", "_id username")
+    .populate("username", "_id username")
     .then(posts => {
-      res.render("posts/index");
+      res.render("posts/index", {
+        posts: posts
+      });
     });
 };

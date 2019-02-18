@@ -9,9 +9,13 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  author: {
+  username: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now
   }
 });
 

@@ -1,1 +1,9 @@
 <h1>All posts</h1>
+{{#each posts}}
+<h3>{{title}}</h3>
+<p>{{content}}</p>
+<p>{{username.username}}</p>
+<p>{{dateCreated}}</p>
+{{else}}
+<p>no posts yet</p>
+{{/each}}
