@@ -52,12 +52,11 @@
             </li>
         </ul>
         {{#if user}}
-        <span class='navbar-text' style="margin-right: 20px; font-size: 1.7rem;">
-            Hello
-            <a href="/users/profile"> {{firstName}}</a>
+        <span style="font-size: 1.7rem;">
+            <a class='nav-link' href="/users/profile">Hello {{firstName}}</a>
         </span>
         {{else}}
-        <p>No user</p>
+        <a href="/users/login" class="nav-link">Not logged in?</a>
         {{/if}}
         <span class="navbar-text">
             <a class="nav-link" href="/users/logout">LOG OUT</a>
