@@ -13,12 +13,19 @@ exports.postNewPost = (req, res) => {
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
-    username: req.user
+    username: req.user,
+    typeOfPost: req.body.typeOfPost
   });
 
-  post.save().then(post => {
-    res.redirect("/posts/all");
-  });
+  post
+    .save()
+    .then(post => {
+      res.redirect("/posts/all");
+    })
+    .catch(err => {
+      console.log(err);
+      res.redirect("/posts/add");
+    });
 };
 
 exports.getAllPosts = (req, res) => {

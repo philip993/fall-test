@@ -16,6 +16,11 @@ const postSchema = new mongoose.Schema({
   dateCreated: {
     type: Date,
     default: Date.now
+  },
+  typeOfPost: {
+    type: String,
+    enum: ["Public", "Private", "Draft", "Announcement"],
+    required: true
   }
 });
 
