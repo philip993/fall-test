@@ -5,5 +5,7 @@ exports.getIndex = (req, res) => {
       user: req.user.username,
       firstName: req.user.firstName
     });
+  } else {
+    res.render("pages/index");
   }
 };
