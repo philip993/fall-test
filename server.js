@@ -14,10 +14,12 @@ const users = require("./routes/users");
 const posts = require("./routes/posts");
 
 mongoose.Promise = global.Promise;
-mongoose
-  .connect("mongodb://localhost/fall", { useNewUrlParser: true })
-  .then(() => console.log("Connected to MongoDB"))
-  .catch(err => console.log("Could not connect to MongoDB"));
+mongoose.connect(
+  "mongodb+srv://rest-shop-901:brando902part12@node-rest-api-aulzl.mongodb.net/fall?retryWrites=true",
+  {
+    useNewUrlParser: true
+  }
+);
 
 require("./config/passport")(passport);
 
