@@ -61,5 +61,12 @@ exports.getLogout = (req, res) => {
 };
 
 exports.getUserMenu = (req, res) => {
-  res.render("users/userMenu");
+  if (req.user) {
+    res.render("users/userMenu", {
+      user: req.user.username,
+      firstName: req.user.firstName
+    });
+  } else {
+    res.render("users/userMenu");
+  }
 };

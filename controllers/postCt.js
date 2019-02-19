@@ -2,7 +2,14 @@ const { Post } = require("../models/Post");
 const { User } = require("../models/User");
 
 exports.getPostMenu = (req, res) => {
-  res.render("posts/postMenu");
+  if (req.user) {
+    res.render("posts/postMenu", {
+      user: req.user.username,
+      firstName: req.user.firstName
+    });
+  } else {
+    res.render("posts/postMenu");
+  }
 };
 
 exports.getPostForm = (req, res) => {
