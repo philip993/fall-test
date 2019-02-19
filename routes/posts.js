@@ -8,5 +8,6 @@ router.get("/add", postCtrl.getPostForm);
 router.post("/all", postCtrl.postNewPost);
 router.get("/all", postCtrl.getAllPosts);
 router.delete("/:id", postCtrl.deletePost);
+router.get("/private", postCtrl.getPrivatePosts);
 
 module.exports = router;

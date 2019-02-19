@@ -50,3 +50,21 @@ exports.deletePost = (req, res) => {
     res.redirect("/posts/all");
   });
 };
+
+exports.getPrivatePosts = (req, res) => {
+  Post.find({ typeOfPost: "Private" })
+    .populate("username", "_id username")
+    .then(posts => {
+      if (req.user) {
+        res.render("posts/privatePost", {
+          posts: posts,
+          user: req.user.username,
+          firstName: req.user.firstName
+        });
+      } else {
+        res.render("posts/privatePost", {
+          posts: posts
+        });
+      }
+    });
+};
