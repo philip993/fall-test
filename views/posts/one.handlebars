@@ -1,0 +1,26 @@
+<h1>One post</h1>
+{{#if post}}
+<div class="card">
+    <h3>{{post.title}}</h3>
+    <p>{{post.content}}</p>
+    {{#if comments}}
+    <div class="container">
+        <p>{{bodyComment}}</p>
+        {{else}}
+        <p>No comments yet</p>
+    </div>
+    {{/if}}
+
+</div>
+{{else}}
+<p>smt wrong</p>
+{{/if}}
+
+<h1>Comment Form</h1>
+<form action="/posts/comments" method="POST">
+    <div class="form-group">
+        <label for="bodyComment">Comment </label>
+        <input type="text" class="form-control" id="bodyComment" placeholder="comment" name="bodyComment">
+    </div>
+    <button type="submit" class="btn btn-primary">Comment </button>
+</form>
