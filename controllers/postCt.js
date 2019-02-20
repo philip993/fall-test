@@ -46,7 +46,7 @@ exports.getAllPosts = (req, res) => {
 };
 
 exports.deletePost = (req, res) => {
-  Post.findOneAndDelete({ _id: req.params._id }).then(post => {
+  Post.findByIdAndRemove({ _id: req.params.id }).then(post => {
     res.redirect("/posts/all");
   });
 };
