@@ -19,11 +19,21 @@
     {{#each posts}}
     <div class="card text-center" style="margin: auto; padding-top: 15px; padding-bottom: 15px; margin-top: 15px; margin-bottom: 15px; width: 60%; height: 100%;">
         <div class="card-header">
+            <span style="float: right; margin: auto; margin-left: 10px;">
+                <a href="#" class="nav-link text-light bg-danger">DELETE</a>
+            </span>
+            <span style="float: right; margin: auto;">
+                <a href="#" class="nav-link text-light bg-dark">EDIT</a>
+            </span>
+        </div>
+        <div class="card-header">
             <span style="float: right;">
-                Author: {{username.username}}
+                <p class="card-text text-secondary">Author: {{username.username}}</p>
             </span>
 
-            <span style="float: left">Type: {{typeOfPost}}</span>
+            <span style="float: left">
+                <p class="card-text text-secondary">Post is {{typeOfPost}}</p>
+            </span>
         </div>
         <div class="card-body">
             <h5 class="card-title">{{title}}</h5>
