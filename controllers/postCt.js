@@ -1,5 +1,6 @@
 const { Post } = require("../models/Post");
 const { User } = require("../models/User");
+const { Comm } = require("../models/Comm");
 
 exports.getPostMenu = (req, res) => {
   if (req.user) {
@@ -67,4 +68,36 @@ exports.getPrivatePosts = (req, res) => {
         });
       }
     });
+};
+
+exports.getOnePage = (req, res) => {
+  Post.findOne({ _id: req.params.id })
+    .populate("comment", "_id bodyComment")
+    .then(post => {
+      res.render("posts/one", {
+        post: post
+      });
+    });
+};
+
+exports.postComm = (req, res) => {
+  const comment = new Comm({
+    bodyComment: req.body.bodyComment,
+    linked: post._id,
+    author: req.user
+  });
+
+  comment.save().then(comment => {
+    res.render("posts/comments", {
+      comment: comment
+    });
+  });
+};
+
+exports.getComments = (req, res) => {
+  Comm.find({}).then(comment => {
+    res.render("posts/comments", {
+      comment: comment
+    });
+  });
 };

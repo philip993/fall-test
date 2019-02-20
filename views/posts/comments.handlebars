@@ -1,0 +1,18 @@
+<!--
+<h1>Comment Form</h1>
+<form action="/posts/one/{{id}}" method="POST">
+    <div class="form-group">
+        <label for="bodyComment">Comment </label>
+        <input type="text" class="form-control" id="bodyComment" placeholder="comment" name="bodyComment" value="{{bodyComment}}">
+    </div>
+    <button type="submit" class="btn btn-primary">Comment </button>
+</form>
+-->
+
+<h1>Comments</h1>
+{{#each comment}}
+
+<p>{{bodyComment}}</p>
+{{else}}
+<p>No comments</p>
+{{/each}}

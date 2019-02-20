@@ -9,5 +9,8 @@ router.post("/all", postCtrl.postNewPost);
 router.get("/all", postCtrl.getAllPosts);
 router.delete("/:id", postCtrl.deletePost);
 router.get("/private", postCtrl.getPrivatePosts);
+router.get("/:id", postCtrl.getOnePage);
+router.post("/comments", postCtrl.postComm);
+router.get("/comments/all", postCtrl.getComments);
 
 module.exports = router;
