@@ -8,6 +8,7 @@ const passport = require("passport");
 const cookierParser = require("cookie-parser");
 const session = require("express-session");
 const moment = require("moment");
+const methodOverride = require("method-override");
 
 const pages = require("./routes/pages");
 const users = require("./routes/users");
@@ -39,6 +40,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+app.use(methodOverride("_method"));
 
 app.use(express.static(path.join(__dirname, "public")));
 
