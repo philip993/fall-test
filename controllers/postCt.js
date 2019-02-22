@@ -79,7 +79,7 @@ exports.getOnePage = (req, res) => {
       });
     });
 };
-
+/*
 exports.postComm = (req, res) => {
   const comment = new Comm({
     bodyComment: req.body.bodyComment,
@@ -90,6 +90,22 @@ exports.postComm = (req, res) => {
   comment.save().then(comment => {
     res.render("posts/comments", {
       comment: comment
+    });
+  });
+};
+*/
+exports.postComments2 = (req, res) => {
+  Post.findById(req.params.id).then(comments => {
+    const comment = new Comm({
+      bodyComment: req.body.bodyComment,
+      linked: post._id,
+      author: req.user
+    });
+
+    comment.save().then(comment => {
+      res.render("posts/comments", {
+        comment: comment
+      });
     });
   });
 };
