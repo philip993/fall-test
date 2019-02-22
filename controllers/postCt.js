@@ -71,19 +71,21 @@ exports.getPrivatePosts = (req, res) => {
 };
 
 exports.getOnePage = (req, res) => {
-  Post.findOne({ _id: req.params.id })
-    .populate("comment", "_id bodyComment")
-    .then(post => {
+  Post.findOne({ _id: req.params.id }).then(post => {
+    Comm.find({ linked: req.params.id }).then(comments => {
       res.render("posts/one", {
-        post: post
+        post: post,
+        comments: comments
       });
     });
+  });
 };
 
 exports.postComm = (req, res) => {
+  console.log(req.body);
   const comment = new Comm({
     bodyComment: req.body.bodyComment,
-    linked: post._id,
+    linked: req.body.linked,
     author: req.user
   });
 

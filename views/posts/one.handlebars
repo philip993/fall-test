@@ -3,13 +3,13 @@
 <div class="card">
     <h3>{{post.title}}</h3>
     <p>{{post.content}}</p>
-    {{#if comments}}
+    {{#each comments}}
     <div class="container">
         <p>{{bodyComment}}</p>
         {{else}}
         <p>No comments yet</p>
     </div>
-    {{/if}}
+    {{/each}}
 
 </div>
 {{else}}
@@ -18,6 +18,7 @@
 
 <h1>Comment Form</h1>
 <form action="/posts/comments" method="POST">
+    <input type="hidden" name='linked' value="{{post._id}}">
     <div class="form-group">
         <label for="bodyComment">Comment </label>
         <input type="text" class="form-control" id="bodyComment" placeholder="comment" name="bodyComment">
