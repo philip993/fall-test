@@ -79,7 +79,7 @@ exports.getOnePage = (req, res) => {
       });
     });
 };
-/*
+
 exports.postComm = (req, res) => {
   const comment = new Comm({
     bodyComment: req.body.bodyComment,
@@ -93,7 +93,7 @@ exports.postComm = (req, res) => {
     });
   });
 };
-*/
+/*
 exports.postComments2 = (req, res) => {
   Post.findById(req.params.id).then(comments => {
     const comment = new Comm({
@@ -109,7 +109,7 @@ exports.postComments2 = (req, res) => {
     });
   });
 };
-
+*/
 exports.getComments = (req, res) => {
   Comm.find({}).then(comment => {
     res.render("posts/comments", {

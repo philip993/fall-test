@@ -12,7 +12,7 @@ const commSchema = new mongoose.Schema({
   },
   linked: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Post"
+    refPath: "Post"
   },
   author: {
     type: mongoose.Schema.Types.ObjectId,
