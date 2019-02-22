@@ -3,10 +3,7 @@
 <div class="card">
     <h3>{{post.title}}</h3>
     <p>{{post.content}}</p>
-<<<<<<< HEAD
     {{#each comments}}
-=======
->>>>>>> fd081d6bd4a9d343d1717b98b445cccac3bbee55
     <div class="container">
         <h3>Comment section</h3>
         {{#if comments}}
@@ -17,17 +14,11 @@
         </div>
         {{/if}}
     </div>
-<<<<<<< HEAD
     {{/each}}
-
-=======
->>>>>>> fd081d6bd4a9d343d1717b98b445cccac3bbee55
 </div>
 {{else}}
 <p>smt wrong</p>
 {{/if}}
-
-<<<<<<< HEAD
 <h1>Comment Form</h1>
 <form action="/posts/comments" method="POST">
     <input type="hidden" name='linked' value="{{post._id}}">
@@ -37,7 +28,6 @@
     </div>
     <button type="submit" class="btn btn-primary">Comment </button>
 </form>
-=======
 <div class="container" style="width: 45%; magin: auto; padding-top: 20px;">
     <h1>Comment Form</h1>
     <form action="/posts/comments" method="POST">
@@ -48,4 +38,3 @@
         <button type="submit" class="btn btn-primary">Comment </button>
     </form>
 </div>
->>>>>>> fd081d6bd4a9d343d1717b98b445cccac3bbee55
