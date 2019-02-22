@@ -21,6 +21,10 @@ const postSchema = new mongoose.Schema({
     type: String,
     enum: ["Public", "Private", "Draft", "Announcement"],
     required: true
+  },
+  linked: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Comm"
   }
 });
 
