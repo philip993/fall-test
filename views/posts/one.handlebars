@@ -4,11 +4,24 @@
     <h3>{{post.title}}</h3>
     <p>{{post.content}}</p>
     <h3>Comment section</h3>
-    <div class="container">
-        {{#each comments}}
-        <p>{{bodyComment}}</p>
+    {{#each comments}}
+    <div class="card">
+        <span style="float: right; margin: auto; margin-left: 10px;">
+            <form action="/posts/{{id}}?_method=DELETE" method="POST">
+                <input type="hidden" name='_method' value="DELETE">
+                <input type="submit" class="btn btn-danger" value="Delete">
+            </form>
+        </span>
+        <div class="card-body">
+            {{bodyComment}}
+        </div>
+        <div class="card-footer">
+            Commented by {{person.username}}
+        </div>
         {{else}}
-        <p>No comments yet</p>
+        <div class="alert alert-secondary" role="alert">
+            No Comments yet!
+        </div>
     </div>
     {{/each}}
 </div>
@@ -21,6 +34,7 @@
     <div class="form-group">
         <label for="bodyComment">Comment </label>
         <input type="text" class="form-control" id="bodyComment" placeholder="comment" name="bodyComment">
+        <input type="hidden" name='person' value="{{person}}">
     </div>
     <button type="submit" class="btn btn-primary">Comment </button>
 </form>

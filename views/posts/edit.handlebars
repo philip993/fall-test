@@ -1,0 +1,13 @@
+<div class="container" style="margin: auto;">
+    <form action="/posts/{{post.id}}?_method=PUT" method="post">
+        <input type="hidden" name="_method" value="PUT">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" name="title" value="{{post.title}}">
+        <label for="content">Content</label>
+        <textarea name="content" class="form-control" id="content" rows="6">{{post.content}}</textarea>
+        <br>
+        <input class="form-control" type="text" name='typeOfPost' value="{{post.typeOfPost}}" readonly>
+        <br>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </form>
+</div>
