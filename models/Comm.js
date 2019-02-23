@@ -14,7 +14,7 @@ const commSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Post"
   },
-  author: {
+  person: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"
   }

@@ -1,0 +1,45 @@
+<div class="container">
+    <h1>One post</h1>
+    {{#if post}}
+    <div class="card">
+        <h3>{{post.title}}</h3>
+        <p>{{post.content}}</p>
+        <h3>Comment section</h3>
+        {{#each comments}}
+        <div class="card">
+            <span style="float: right; margin: auto; margin-left: 10px;">
+                <form action="/posts/{{id}}?_method=DELETE" method="POST">
+                    <input type="hidden" name='_method' value="DELETE">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            </span>
+            <div class="card-body">
+                {{bodyComment}}
+            </div>
+            <div class="card-footer">
+                Commented by {{person.username}}
+            </div>
+            {{else}}
+            <div class="alert alert-secondary" role="alert">
+                No Comments yet!
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{else}}
+    <p>smt wrong</p>
+    {{/if}}
+
+
+    <form action="/posts/comments" method="POST" style="width: 45%; margin: auto; padding-top: 20px; padding-bottom: 30px;">
+        <h1>Comment Form</h1>
+        <input type="hidden" name='linked' value="{{post._id}}">
+        <div class="form-group">
+            <label for="bodyComment">Comment </label>
+            <!-- <input type="text" class="form-control" id="bodyComment" placeholder="comment" name="bodyComment">-->
+            <textarea name="bodyComment" class="form-control" id="bodyComment" rows="3"></textarea>
+            <input type="hidden" name='person' value="{{person}}">
+        </div>
+        <button type="submit" class="btn btn-primary">Comment </button>
+    </form>
+</div>

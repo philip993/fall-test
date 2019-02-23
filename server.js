@@ -13,6 +13,7 @@ const methodOverride = require("method-override");
 const pages = require("./routes/pages");
 const users = require("./routes/users");
 const posts = require("./routes/posts");
+const comments = require("./routes/comments");
 
 mongoose.Promise = global.Promise;
 mongoose
@@ -48,6 +49,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", pages);
 app.use("/users", users);
 app.use("/posts", posts);
+app.use("/posts/comments", comments);
 
 app.use((req, res, next) => {
   res.render("pages/notfound");
