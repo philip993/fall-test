@@ -1,0 +1,7 @@
+<div class="container">
+    <form action="/posts/comments/{{comment.id}}?_method=PUT" method="post">
+        <input type="hidden" name="_method" value="PUT">
+        <textarea name="bodyComment" id="bodyComment" rows="3" class="form-control">{{comment.bodyComment}}</textarea>
+        <button type="submit" class="btn btn-primary">Edit Comment</button>
+    </form>
+</div>

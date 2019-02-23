@@ -8,6 +8,7 @@
         {{#each comments}}
         <div class="card">
             <span style="float: right; margin: auto; margin-left: 10px;">
+                <a href="/posts/comments/edit/{{id}}" class="btn btn-dark">EDIT</a>
                 <form action="/posts/{{id}}?_method=DELETE" method="POST">
                     <input type="hidden" name='_method' value="DELETE">
                     <input type="submit" class="btn btn-danger" value="Delete">

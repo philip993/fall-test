@@ -20,3 +20,19 @@ exports.postComm = (req, res) => {
     res.redirect("/posts/all");
   });
 };
+
+exports.getCommentEditForm = (req, res) => {
+  Comm.findOne({ _id: req.params.id }).then(comment => {
+    res.render("comments/edit", {
+      comment: comment
+    });
+  });
+};
+
+exports.putCommentEdit = (req, res) => {
+  Comm.findOne({ _id: req.params.id }).then(comment => {
+    comment.bodyComment = req.body.bodyComment;
+
+    comment.save().then(res.redirect("/posts/all"));
+  });
+};
