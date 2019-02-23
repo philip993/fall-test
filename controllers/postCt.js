@@ -71,35 +71,38 @@ exports.getPrivatePosts = (req, res) => {
 };
 
 exports.getOnePage = (req, res) => {
+  if (!req.user) {
+    return res.redirect("/users/login");
+  }
   Post.findOne({ _id: req.params.id }).then(post => {
-    Comm.find({ linked: req.params.id }).then(comments => {
-      res.render("posts/one", {
-        post: post,
-        comments: comments
+    Comm.find({ linked: req.params.id })
+      .populate("person")
+      .then(comments => {
+        res.render("comments/list", {
+          post: post,
+          comments: comments,
+          person: req.user._id
+        });
       });
+  });
+};
+
+exports.getEditForm = (req, res) => {
+  Post.findOne({ _id: req.params.id }).then(post => {
+    res.render("posts/edit", {
+      post: post
     });
   });
 };
 
-exports.postComm = (req, res) => {
-  console.log(req.body);
-  const comment = new Comm({
-    bodyComment: req.body.bodyComment,
-    linked: req.body.linked,
-    author: req.user
-  });
+exports.editPost = (req, res) => {
+  Post.findOne({ _id: req.params.id }).then(post => {
+    post.title = req.body.title;
+    post.content = req.body.content;
+    post.typeOfPost = req.body.typeOfPost;
 
-  comment.save().then(comment => {
-    res.render("posts/comments", {
-      comment: comment
-    });
-  });
-};
-
-exports.getComments = (req, res) => {
-  Comm.find({}).then(comment => {
-    res.render("posts/comments", {
-      comment: comment
+    post.save().then(post => {
+      res.redirect("/posts/all");
     });
   });
 };
