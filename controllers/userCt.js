@@ -8,7 +8,7 @@ exports.getLoginForm = (req, res) => {
 
 exports.postLogin = (req, res, next) => {
   passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/posts/all",
     failureRedirect: "/users/login"
   })(req, res, next);
 };

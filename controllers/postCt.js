@@ -37,13 +37,19 @@ exports.postNewPost = (req, res) => {
 };
 
 exports.getAllPosts = (req, res) => {
-  Post.find({})
-    .populate("username", "_id username")
-    .then(posts => {
-      res.render("posts/index", {
-        posts: posts
+  if (req.user) {
+    Post.find({})
+      .populate("username", "_id username")
+      .then(posts => {
+        res.render("posts/index", {
+          posts: posts,
+          user: req.user.username,
+          firstName: req.user.firstName
+        });
       });
-    });
+  } else {
+    res.redirect("/users/login");
+  }
 };
 
 exports.deletePost = (req, res) => {
@@ -89,9 +95,13 @@ exports.getOnePage = (req, res) => {
 
 exports.getEditForm = (req, res) => {
   Post.findOne({ _id: req.params.id }).then(post => {
-    res.render("posts/edit", {
-      post: post
-    });
+    if (req.user.id == post.username) {
+      res.render("posts/edit", {
+        post: post
+      });
+    } else {
+      res.redirect("/posts/all");
+    }
   });
 };
 
@@ -100,6 +110,7 @@ exports.editPost = (req, res) => {
     post.title = req.body.title;
     post.content = req.body.content;
     post.typeOfPost = req.body.typeOfPost;
+    post.username = req.body.username;
 
     post.save().then(post => {
       res.redirect("/posts/all");

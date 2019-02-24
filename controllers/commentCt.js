@@ -23,9 +23,13 @@ exports.postComm = (req, res) => {
 
 exports.getCommentEditForm = (req, res) => {
   Comm.findOne({ _id: req.params.id }).then(comment => {
-    res.render("comments/edit", {
-      comment: comment
-    });
+    if (req.user.id == comment.person) {
+      res.render("comments/edit", {
+        comment: comment
+      });
+    } else {
+      return res.redirect("/posts/all");
+    }
   });
 };
 

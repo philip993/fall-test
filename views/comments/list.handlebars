@@ -7,17 +7,21 @@
         <h3>Comment section</h3>
         {{#each comments}}
         <div class="card">
-            <span style="float: right; margin: auto; margin-left: 10px;">
-                <a href="/posts/comments/edit/{{id}}" class="btn btn-dark">EDIT</a>
-                <form action="/posts/comments/{{id}}?_method=DELETE" method="POST">
-                    <input type="hidden" name='_method' value="DELETE">
-                    <input type="submit" class="btn btn-danger" value="Delete">
-                </form>
-            </span>
+            <div class="card-header">
+                <span style="float: right; margin: auto; margin-left: 10px;">
+                    <form action="/posts/comments/{{id}}?_method=DELETE" method="POST">
+                        <input type="hidden" name='_method' value="DELETE">
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </form>
+                </span>
+                <span style="float: right; margin: auto;">
+                    <a href="/posts/comments/edit/{{id}}" class="btn btn-dark">EDIT</a>
+                </span>
+            </div>
             <div class="card-body">
                 {{bodyComment}}
             </div>
-            <div class="card-footer">
+            <div class="card-footer" style="padding-bottom: 20px; margin-bottom: 20px;">
                 Commented by {{person.username}}
             </div>
             {{else}}
